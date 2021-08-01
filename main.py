@@ -7,7 +7,7 @@ from random import randint
 tiles = 20
 #  necessario installar a font joystix Monospace
 lb_config = {'font': 'joystix\ Monospace 10', 'bg':'#253434', 'fg': 'white'}
-
+ 
 class App():
     def __init__(self, master):  #  Metodo construtor
 
@@ -150,9 +150,16 @@ class App():
         else:  #  fim do jogo
             self.draw_text(300, 300, 'GameOver!', 40)
             self.draw_text(300, 340,  f'Your Points:{self.points.get()}', 10)
+            self.draw_text(300, 380,  f'Press r to restart', 10)
+            self.master.bind('<r>', lambda _: self.replayGame())
+
+
+    def replayGame(self):
+        self.__init__(self.master)
 
 
 if __name__ == "__main__":
     root = Tk()
     App(root)
     root.mainloop()
+    
